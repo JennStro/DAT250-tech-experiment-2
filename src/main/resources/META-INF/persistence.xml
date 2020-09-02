@@ -5,6 +5,9 @@
     <persistence-unit name="bankdb" transaction-type="RESOURCE_LOCAL">
         <class>Person</class>
         <class>Bank</class>
+        <class>Address</class>
+        <class>CreditCard</class>
+        <class>Pincode</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
             <property name="javax.persistence.jdbc.url"
