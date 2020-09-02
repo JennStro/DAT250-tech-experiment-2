@@ -22,10 +22,11 @@ public class CreditCard {
 
     public CreditCard() {}
 
-    public CreditCard(int number, int limit, int balance) {
+    public CreditCard(int number, int limit, int balance, Pincode pincode) {
         this.number = number;
         this.limit = limit;
         this.balance = balance;
+        this.pincode = pincode;
     }
 
     public int getNumber() {
