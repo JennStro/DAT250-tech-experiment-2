@@ -2,6 +2,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class CreditCard {
@@ -13,6 +14,11 @@ public class CreditCard {
     private int number;
     private int limit;
     private int balance;
+
+    private Pincode pincode;
+
+    @ManyToOne
+    private Bank bank;
 
     public int getNumber() {
         return number;

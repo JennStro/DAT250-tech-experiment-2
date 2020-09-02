@@ -2,6 +2,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Person {
@@ -12,6 +17,26 @@ public class Person {
 
     private String firstName;
     private String lastName;
+
+    @ManyToMany
+    @JoinTable(
+            name = "person_address",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "address_id")
+    )
+    private List<Address> addresses;
+
+    @OneToMany
+    @JoinTable(name = "person_credit_card")
+    private List<CreditCard> creditCards;
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
 
     public String getFirstName() {
         return firstName;
