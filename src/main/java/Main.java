@@ -23,12 +23,14 @@ public class Main {
         entityManager.persist(person);
         entityManager.getTransaction().commit();
 
-        Query query = entityManager.createQuery("select firstName from person");
-        List<String> personNames = query.getResultList();
+        Query query = entityManager.createQuery("select p from Person p");
+        List<Person> persons = query.getResultList();
 
-        for (String name : personNames) {
-            System.out.println(name);
+        for (Person personQuery : persons) {
+            System.out.println(personQuery);
         }
+
+
 
         entityManager.close();
     }
