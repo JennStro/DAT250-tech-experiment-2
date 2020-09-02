@@ -7,4 +7,19 @@
     <groupId>groupId</groupId>
     <artifactId>DAT250-tech-experiment-2</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.15.2.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>3.0.0-M1</version>
+        </dependency>
+    </dependencies>
+
 </project>
