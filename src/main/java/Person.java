@@ -31,13 +31,6 @@ public class Person {
     @JoinTable(name = "person_credit_card")
     private List<CreditCard> creditCards;
 
-    public Person() {}
-
-    public Person(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
     public List<Address> getAddresses() {
         return addresses;
     }

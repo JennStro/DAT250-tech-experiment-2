@@ -17,17 +17,24 @@ public class CreditCard {
 
     private Pincode pincode;
 
-    @ManyToOne
-    private Bank bank;
+    public Pincode getPincode() {
+        return pincode;
+    }
 
-    public CreditCard() {}
-
-    public CreditCard(int number, int limit, int balance, Pincode pincode) {
-        this.number = number;
-        this.limit = limit;
-        this.balance = balance;
+    public void setPincode(Pincode pincode) {
         this.pincode = pincode;
     }
+
+    public Bank getBank() {
+        return bank;
+    }
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
+    }
+
+    @ManyToOne
+    private Bank bank;
 
     public int getNumber() {
         return number;

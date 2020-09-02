@@ -17,19 +17,26 @@ public class Main {
         entityManager.getTransaction().begin();
 
         Person person = new Person();
-        person.setFirstName("Jenny");
+        person.setFirstName("Espen");
         person.setLastName("Strommen");
         Bank bank = new Bank();
-        bank.setName("Bank 1");
+        bank.setName("SpV");
 
         entityManager.persist(person);
+        entityManager.persist(bank);
         entityManager.getTransaction().commit();
 
         Query query = entityManager.createQuery("select p from Person p");
         List<Person> persons = query.getResultList();
+        Query bankQuery = entityManager.createQuery("select b from Bank b");
+        List<Bank> banks =  bankQuery.getResultList();
 
         for (Person personQuery : persons) {
             System.out.println(personQuery);
+        }
+
+        for (Bank bankResult : banks) {
+            System.out.println(bankResult);
         }
 
         entityManager.close();

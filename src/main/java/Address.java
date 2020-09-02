@@ -19,14 +19,6 @@ public class Address {
     @ManyToMany(mappedBy = "addresses")
     private List<Person> persons;
 
-    public Address() {}
-
-    public Address(String street, int number, Person ... persons) {
-        this.street = street;
-        this.number = number;
-        this.persons = Arrays.asList(persons);
-    }
-
     public List<Person> getPersons() {
         return persons;
     }

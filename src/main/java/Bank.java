@@ -20,13 +20,6 @@ public class Bank {
     @JoinTable(name = "bank_credit_card")
     private List<CreditCard> creditcards;
 
-    public Bank() {}
-
-    public Bank(String name, CreditCard ... creditCards) {
-        this.name = name;
-        this.creditcards = Arrays.asList(creditCards);
-    }
-
     public String getName() {
         return name;
     }
@@ -37,6 +30,11 @@ public class Bank {
 
     public List<CreditCard> getCreditcards() {
         return creditcards;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 
     public void setName(String name) {
