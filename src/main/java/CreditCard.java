@@ -20,6 +20,14 @@ public class CreditCard {
     @ManyToOne
     private Bank bank;
 
+    public CreditCard() {}
+
+    public CreditCard(int number, int limit, int balance) {
+        this.number = number;
+        this.limit = limit;
+        this.balance = balance;
+    }
+
     public int getNumber() {
         return number;
     }

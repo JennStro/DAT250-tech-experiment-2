@@ -6,6 +6,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -30,12 +31,27 @@ public class Person {
     @JoinTable(name = "person_credit_card")
     private List<CreditCard> creditCards;
 
+    public Person() {}
+
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public List<Address> getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
+    public List<CreditCard> getCreditCards() {
+        return creditCards;
+    }
+
+    public void setCreditCards(CreditCard ... creditCards) {
+        this.creditCards = Arrays.asList(creditCards);
+    }
+
+    public void setAddresses(Address ... addresses) {
+        this.addresses = Arrays.asList(addresses);
     }
 
     public String getFirstName() {

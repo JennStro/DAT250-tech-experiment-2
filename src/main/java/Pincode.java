@@ -13,6 +13,13 @@ public class Pincode {
     private String pincode;
     private int count;
 
+    public Pincode() {}
+
+    public Pincode(String pincode, int count) {
+        this.pincode = pincode;
+        this.count = count;
+    }
+
     public String getPincode() {
         return pincode;
     }
