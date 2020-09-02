@@ -29,4 +29,8 @@ public class Person {
         this.lastName = last_name;
     }
 
+    @Override
+    public String toString() {
+        return this.firstName + " " + this.lastName;
+    }
 }
