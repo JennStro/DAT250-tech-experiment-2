@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Main {
 
-    private static final String PERSISTENCE_UNIT_NAME = "persons";
+    private static final String PERSISTENCE_UNIT_NAME = "bankdb";
     private static EntityManagerFactory entityManagerFactory;
 
     public static void main(String[] args) {
@@ -19,6 +19,8 @@ public class Main {
         Person person = new Person();
         person.setFirstName("Jenny");
         person.setLastName("Strommen");
+        Bank bank = new Bank();
+        bank.setName("Bank 1");
 
         entityManager.persist(person);
         entityManager.getTransaction().commit();
@@ -29,8 +31,6 @@ public class Main {
         for (Person personQuery : persons) {
             System.out.println(personQuery);
         }
-
-
 
         entityManager.close();
     }
