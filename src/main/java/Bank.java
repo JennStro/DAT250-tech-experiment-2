@@ -1,3 +1,4 @@
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,7 @@ public class Bank {
 
     private String name;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "bank_credit_card")
     private List<CreditCard> creditcards;
 

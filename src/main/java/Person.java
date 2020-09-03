@@ -1,3 +1,4 @@
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,7 @@ public class Person {
     private String firstName;
     private String lastName;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "person_address",
             joinColumns = @JoinColumn(name = "person_id"),
@@ -27,7 +28,7 @@ public class Person {
     )
     private List<Address> addresses;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "person_credit_card")
     private List<CreditCard> creditCards;
 

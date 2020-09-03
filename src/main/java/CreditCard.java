@@ -1,8 +1,10 @@
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class CreditCard {
@@ -15,7 +17,11 @@ public class CreditCard {
     private int limit;
     private int balance;
 
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Pincode pincode;
+
+    @ManyToOne
+    private Bank bank;
 
     public Pincode getPincode() {
         return pincode;
@@ -32,9 +38,6 @@ public class CreditCard {
     public void setBank(Bank bank) {
         this.bank = bank;
     }
-
-    @ManyToOne
-    private Bank bank;
 
     public int getNumber() {
         return number;

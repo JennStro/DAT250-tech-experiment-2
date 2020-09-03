@@ -17,26 +17,54 @@ public class Main {
         entityManager.getTransaction().begin();
 
         Person person = new Person();
-        person.setFirstName("Espen");
+        person.setFirstName("Jenny");
         person.setLastName("Strommen");
+
         Bank bank = new Bank();
         bank.setName("SpV");
+
+        Pincode pincode = new Pincode();
+        pincode.setPincode("1234");
+        pincode.setCount(1);
+
+        CreditCard creditCard = new CreditCard();
+        creditCard.setBank(bank);
+        creditCard.setPincode(pincode);
+        creditCard.setNumber(12341234);
+        creditCard.setBalance(1000);
+        creditCard.setLimit(15000);
+
+        bank.setCreditcards(creditCard);
+
+        person.setCreditCards(creditCard);
+
+        Address address = new Address();
+        address.setNumber(12);
+        address.setStreet("Holbergs gate");
+
+        person.setAddresses(address);
 
         entityManager.persist(person);
         entityManager.persist(bank);
         entityManager.getTransaction().commit();
 
-        Query query = entityManager.createQuery("select p from Person p");
-        List<Person> persons = query.getResultList();
+        Query personQuery = entityManager.createQuery("select p from Person p");
+        List<Person> persons = personQuery.getResultList();
         Query bankQuery = entityManager.createQuery("select b from Bank b");
         List<Bank> banks =  bankQuery.getResultList();
+        Query creditCardQuery = entityManager.createQuery("select c from CreditCard c");
+        List<CreditCard> creditCards = creditCardQuery.getResultList();
 
-        for (Person personQuery : persons) {
-            System.out.println(personQuery);
+        for (Person personResult : persons) {
+            System.out.println(personResult);
         }
 
         for (Bank bankResult : banks) {
             System.out.println(bankResult);
+        }
+
+        for (CreditCard creditCardResult : creditCards) {
+            System.out.println(creditCardResult);
         }
 
         entityManager.close();
