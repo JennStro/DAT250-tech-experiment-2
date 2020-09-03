@@ -7,6 +7,7 @@ public class Factory {
     private String[] firstNames = {"Ola", "Hege", "Vilde", "Espen", "Helge"};
     private String[] lastNames = {"Hermansen", "Navnesen", "Bjørnestad", "Olafsen"};
     private String[] streets = {"Holbergsgaten", "Allegaten", "Nygårdsgaten"};
+    private String[] banks = {"Sparebanken Vest", "Den Norske Bank", "Danske Bank", "Sparebanken Sør"};
 
     public Person[] createPersons(int numberOfPersons) {
         Person[] persons = new Person[numberOfPersons];
@@ -39,20 +40,25 @@ public class Factory {
             creditCard.setLimit(random.nextInt(20000));
             creditCard.setBalance(random.nextInt(20000));
             creditCard.setNumber(random.nextInt(1234));
-            creditCard.setPincode();
-            creditCard.setBank();
+            creditCard.setPincode(createPincode());
+            creditCard.setBank(createBank());
+            creditCards[i] = creditCard;
         }
+        return creditCards;
     }
 
-    public Pincode[] createPincode(int numberOfPins) {
-        Pincode[] pincodes = new Pincode[numberOfPins];
-        for (int i = 0; i < numberOfPins; i++) {
-            Pincode pincode = new Pincode();
-            pincode.setCount(random.nextInt(100));
-            pincode.setPincode(generatePin());
-            pincodes[i] = pincode;
-        }
-        return pincodes;
+    public Bank createBank() {
+        Bank bank = new Bank();
+        bank.setName(banks[random.nextInt(banks.length)]);
+        bank.setCreditcards(createCreditCards(random.nextInt(5)));
+        return bank;
+    }
+
+    public Pincode createPincode() {
+        Pincode pincode = new Pincode();
+        pincode.setCount(random.nextInt(100));
+        pincode.setPincode(generatePin());
+        return pincode;
     }
 
     private String generatePin() {
