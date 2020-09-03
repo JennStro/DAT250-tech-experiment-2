@@ -16,6 +16,7 @@ public class Main {
 
         entityManager.getTransaction().begin();
 
+        /*
         Person person = new Person();
         person.setFirstName("Jenny");
         person.setLastName("Strommen");
@@ -44,13 +45,20 @@ public class Main {
 
         person.setAddresses(address);
 
+         */
+
         Factory factory = new Factory();
+
         for (Person randomPerson : factory.createPersons(5)) {
             entityManager.persist(randomPerson);
         }
 
-        entityManager.persist(person);
-        entityManager.persist(bank);
+        for (int i = 0; i < 5; i++) {
+            entityManager.persist(factory.createBank());
+        }
+
+        //entityManager.persist(person);
+        //entityManager.persist(bank);
         entityManager.getTransaction().commit();
 
         Query personQuery = entityManager.createQuery("select p from Person p");

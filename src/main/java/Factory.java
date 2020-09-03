@@ -16,7 +16,7 @@ public class Factory {
             person.setFirstName(firstNames[random.nextInt(firstNames.length)]);
             person.setLastName(lastNames[random.nextInt(lastNames.length)]);
             person.setAddresses(createAddresses(random.nextInt(5)));
-            person.setCreditCards(createCreditCards(random.nextInt(5)));
+            person.setCreditCards(createCreditCards(random.nextInt(5), createBank()));
             persons[i] = person;
         }
         return persons;
@@ -33,7 +33,7 @@ public class Factory {
         return addresses;
     }
 
-    public CreditCard[] createCreditCards(int numberOfCards) {
+    public CreditCard[] createCreditCards(int numberOfCards, Bank bank) {
         CreditCard[] creditCards = new CreditCard[numberOfCards];
         for (int i = 0; i < numberOfCards; i++) {
             CreditCard creditCard = new CreditCard();
@@ -41,6 +41,7 @@ public class Factory {
             creditCard.setBalance(random.nextInt(200));
             creditCard.setNumber(random.nextInt(14));
             creditCard.setPincode(createPincode());
+            creditCard.setBank(bank);
             creditCards[i] = creditCard;
         }
         return creditCards;
@@ -48,8 +49,8 @@ public class Factory {
 
     public Bank createBank() {
         Bank bank = new Bank();
-        bank.setName(banks[0]);
-        bank.setCreditcards(createCreditCards(5));
+        bank.setName(banks[random.nextInt(banks.length)]);
+        bank.setCreditcards(createCreditCards(5, bank));
         return bank;
     }
 

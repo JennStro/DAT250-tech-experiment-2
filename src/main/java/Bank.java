@@ -3,7 +3,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import java.util.Arrays;
 import java.util.List;
@@ -12,13 +11,12 @@ import java.util.List;
 public class Bank {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "bank_credit_card")
+    @OneToMany(mappedBy = "bank", cascade = CascadeType.PERSIST)
     private List<CreditCard> creditcards;
 
     public String getName() {

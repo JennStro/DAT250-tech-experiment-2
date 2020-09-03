@@ -3,6 +3,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -20,7 +21,8 @@ public class CreditCard {
     @OneToOne(cascade = CascadeType.PERSIST)
     private Pincode pincode;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "bank_credit_card")
     private Bank bank;
 
     public Pincode getPincode() {
