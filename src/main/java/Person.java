@@ -44,7 +44,7 @@ public class Person {
         this.creditCards = Arrays.asList(creditCards);
     }
 
-    public void setAddresses(Address ... addresses) {
+    public void setAddresses(Address... addresses) {
         this.addresses = Arrays.asList(addresses);
     }
 
