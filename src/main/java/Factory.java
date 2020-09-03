@@ -16,7 +16,7 @@ public class Factory {
             person.setFirstName(firstNames[random.nextInt(firstNames.length)]);
             person.setLastName(lastNames[random.nextInt(lastNames.length)]);
             person.setAddresses(createAddresses(random.nextInt(5)));
-            person.setCreditCards();
+            person.setCreditCards(createCreditCards(random.nextInt(5)));
             persons[i] = person;
         }
         return persons;
@@ -37,11 +37,10 @@ public class Factory {
         CreditCard[] creditCards = new CreditCard[numberOfCards];
         for (int i = 0; i < numberOfCards; i++) {
             CreditCard creditCard = new CreditCard();
-            creditCard.setLimit(random.nextInt(20000));
-            creditCard.setBalance(random.nextInt(20000));
-            creditCard.setNumber(random.nextInt(1234));
+            creditCard.setLimit(random.nextInt(200));
+            creditCard.setBalance(random.nextInt(200));
+            creditCard.setNumber(random.nextInt(14));
             creditCard.setPincode(createPincode());
-            creditCard.setBank(createBank());
             creditCards[i] = creditCard;
         }
         return creditCards;
@@ -49,24 +48,16 @@ public class Factory {
 
     public Bank createBank() {
         Bank bank = new Bank();
-        bank.setName(banks[random.nextInt(banks.length)]);
-        bank.setCreditcards(createCreditCards(random.nextInt(5)));
+        bank.setName(banks[0]);
+        bank.setCreditcards(createCreditCards(5));
         return bank;
     }
 
     public Pincode createPincode() {
         Pincode pincode = new Pincode();
         pincode.setCount(random.nextInt(100));
-        pincode.setPincode(generatePin());
+        pincode.setPincode("1234");
         return pincode;
-    }
-
-    private String generatePin() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < 4; i++) {
-            builder.append(String.valueOf(random.nextInt(9)));
-        }
-        return builder.toString();
     }
 
 }

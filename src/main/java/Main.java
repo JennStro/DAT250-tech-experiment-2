@@ -44,6 +44,11 @@ public class Main {
 
         person.setAddresses(address);
 
+        Factory factory = new Factory();
+        for (Person randomPerson : factory.createPersons(5)) {
+            entityManager.persist(randomPerson);
+        }
+
         entityManager.persist(person);
         entityManager.persist(bank);
         entityManager.getTransaction().commit();
