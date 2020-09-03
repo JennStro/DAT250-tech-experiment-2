@@ -42,4 +42,9 @@ public class Address {
     public void setNumber(int number) {
         this.number = number;
     }
+
+    @Override
+    public String toString() {
+        return this.street + this.number;
+    }
 }

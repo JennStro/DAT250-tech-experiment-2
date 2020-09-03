@@ -62,4 +62,9 @@ public class CreditCard {
     public void setBalance(int balance) {
         this.balance = balance;
     }
+
+    @Override
+    public String toString() {
+        return "Creditcard: {Number: " + this.number + " Bank: "+ this.bank + " Pin: " + this.pincode +"} ";
+    }
 }
