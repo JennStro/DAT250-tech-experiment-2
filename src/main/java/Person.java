@@ -20,7 +20,7 @@ public class Person {
     private String firstName;
     private String lastName;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinTable(
             name = "person_address",
             joinColumns = @JoinColumn(name = "person_id"),
@@ -28,7 +28,7 @@ public class Person {
     )
     private List<Address> addresses;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinTable(name = "person_credit_card")
     private List<CreditCard> creditCards;
 

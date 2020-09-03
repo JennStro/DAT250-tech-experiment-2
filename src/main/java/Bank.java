@@ -16,7 +16,7 @@ public class Bank {
 
     private String name;
 
-    @OneToMany(mappedBy = "bank", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "bank", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<CreditCard> creditcards;
 
     public String getName() {

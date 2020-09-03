@@ -18,7 +18,7 @@ public class CreditCard {
     private int limit;
     private int balance;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Pincode pincode;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
